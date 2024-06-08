@@ -7,16 +7,16 @@ import kotlin.test.assertEquals
 class CustomCollectionSerializationTest {
     @Test
     fun testCustomCollectionSerialization() {
-        val data = Person(
+        val data = User(
             "Alice",
-            BTreeSet(Pet("Woofer", "dog"), Pet("Meowser", "cat"))
+            ShoppingCart(listOf(Item("T-Shirt", 20.0), Item("Boots", 50.0)))
         )
 
         val encodedXml = XML.encodeToString(data)
-        val decodedXml = XML.decodeFromString<Person>(encodedXml)
+        val decodedXml = XML.decodeFromString<User>(encodedXml)
 
         assertEquals(
-            """<Person name="Alice"><Pet name="Woofer" species="dog"/><Pet name="Meowser" species="cat"/></Person>""",
+            """<User name="Alice"><Item name="T-Shirt" price="20.0"/><Item name="Boots" price="50.0"/></User>""",
             encodedXml
         )
         assertEquals(data, decodedXml)

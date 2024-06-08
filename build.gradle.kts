@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
-    kotlin("plugin.serialization") version "1.9.24"
+    kotlin("jvm") version "2.0.0"
+    kotlin("plugin.serialization") version "2.0.0"
 }
 
 group = "org.example"
@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.pdvrieze.xmlutil:serialization:0.86.3")
+    implementation("io.github.pdvrieze.xmlutil:serialization:0.90.0-RC2")
     testImplementation(kotlin("test"))
 }
 
