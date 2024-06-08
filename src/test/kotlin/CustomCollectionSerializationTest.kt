@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 class CustomCollectionSerializationTest {
     val data = User(
         "Alice",
-        ShoppingCart(listOf(Item("T-Shirt", 20.0), Item("Boots", 50.0)))
+        ShoppingCart(mutableListOf(Item("T-Shirt", 20.0), Item("Boots", 50.0)))
     )
 
     @Test

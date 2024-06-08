@@ -12,7 +12,7 @@ import kotlinx.serialization.encoding.Encoder
 data class User(val name: String, val shoppingCart: ShoppingCart)
 
 @Serializable(with = ShoppingCartSerializer::class)
-data class ShoppingCart(val items: List<Item>) {
+data class ShoppingCart(val items: MutableList<Item>) {
     val total: Double get() = items.sumOf { it.price }
 }
 
@@ -31,5 +31,5 @@ class ShoppingCartSerializer : KSerializer<ShoppingCart> {
         encoder.encodeSerializableValue(listSerializer, value.items)
 
     override fun deserialize(decoder: Decoder): ShoppingCart =
-        ShoppingCart(decoder.decodeSerializableValue(listSerializer))
+        ShoppingCart(decoder.decodeSerializableValue(listSerializer).toMutableList())
 }
